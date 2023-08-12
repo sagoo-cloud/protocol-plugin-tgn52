@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/gogf/gf/v2/util/gconv"
 	"github.com/sagoo-cloud/sagooiot/extend"
 	"github.com/sagoo-cloud/sagooiot/extend/module"
 	"net"
@@ -21,10 +22,26 @@ func TestManagerInit(t *testing.T) {
 		t.Log(info.Path)
 		t.Log(info.Client)
 	}
+
+	p, err := manager.GetInterface("tgn52")
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+
+	data := gconv.Bytes("NB1;1234567;1;2;+25.5;00;030;+21;+22")
+
+	obj := p.(module.Protocol)
+	res, err := obj.Decode(data, "")
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+	t.Log(res)
+
 }
 
 // 测试插件服务使用，需要先将要测试的插件进行编译
 func TestProtocolPluginServer(t *testing.T) {
+	extend.GetProtocolPlugin()
 	NetData()
 }
 
