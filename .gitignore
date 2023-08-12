@@ -13,4 +13,4 @@ bin/
 cbuild
 **/.DS_Store
 .test/
-built/*
+built/protocol-*
