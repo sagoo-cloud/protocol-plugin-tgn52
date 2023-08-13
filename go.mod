@@ -3,8 +3,9 @@ module sagoo-plugin
 go 1.20
 
 require (
+	github.com/gogf/gf/v2 v2.2.0
 	github.com/hashicorp/go-plugin v1.4.10
-	github.com/sagoo-cloud/sagooiot v1.0.4
+	github.com/sagoo-cloud/sagooiot v1.0.5
 
 )
 
@@ -18,7 +19,6 @@ require (
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
-	github.com/gogf/gf/v2 v2.2.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grokify/html-strip-tags-go v0.0.1 // indirect

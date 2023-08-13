@@ -7,13 +7,13 @@ import (
 	"strings"
 
 	gplugin "github.com/hashicorp/go-plugin"
-	pluginModule "github.com/sagoo-cloud/sagooiot/extend/module"
+	plugin "github.com/sagoo-cloud/sagooiot/extend/module"
 )
 
 // ProtocolTgn52 实现
 type ProtocolTgn52 struct{}
 
-func (ProtocolTgn52) Info() model.ModuleInfo {
+func (p *ProtocolTgn52) Info() model.ModuleInfo {
 	var res = model.ModuleInfo{}
 	res.Name = "tgn52"
 	res.Title = "TG-N5 v2设备协议"
@@ -23,13 +23,16 @@ func (ProtocolTgn52) Info() model.ModuleInfo {
 	return res
 }
 
-func (ProtocolTgn52) Encode(args interface{}) (string, error) {
+func (p *ProtocolTgn52) Encode(args interface{}) model.JsonRes {
+	var resp model.JsonRes
 	fmt.Println("接收到参数：", args)
-	return "", nil
+	return resp
 }
 
-func (ProtocolTgn52) Decode(data []byte, dataIdent string) (string, error) {
-	tmpData := strings.Split(string(data), ";")
+func (p *ProtocolTgn52) Decode(data model.DataReq) model.JsonRes {
+	var resp model.JsonRes
+	resp.Code = 0
+	tmpData := strings.Split(string(data.Data), ";")
 	var rd = DeviceData{}
 	l := len(tmpData)
 	if l > 7 {
@@ -45,11 +48,15 @@ func (ProtocolTgn52) Decode(data []byte, dataIdent string) (string, error) {
 			rd.Update = append(rd.Update, tmpData[i])
 		}
 	}
-	res := pluginModule.OutJsonRes(0, "", rd)
+	res := plugin.OutJsonRes(0, "", rd)
 	if rd.IsEmpty() {
-		res = pluginModule.OutJsonRes(1, "数据为空，或数据结构不对", nil)
+		resp.Code = 1
+		resp.Message = "数据为空，或数据结构不对"
+		return resp
 	}
-	return res, nil
+	resp.Code = 0
+	resp.Data = res
+	return resp
 }
 
 // Tgn52Plugin 插件接口实现
@@ -58,20 +65,20 @@ func (ProtocolTgn52) Decode(data []byte, dataIdent string) (string, error) {
 type Tgn52Plugin struct{}
 
 // Server 此方法由插件进程延迟调
-func (Tgn52Plugin) Server(*gplugin.MuxBroker) (interface{}, error) {
-	return &pluginModule.ProtocolRPCServer{Impl: new(ProtocolTgn52)}, nil
+func (t *Tgn52Plugin) Server(*gplugin.MuxBroker) (interface{}, error) {
+	return &plugin.ProtocolRPCServer{Impl: new(ProtocolTgn52)}, nil
 }
 
 // Client 此方法由宿主进程调用
-func (Tgn52Plugin) Client(b *gplugin.MuxBroker, c *rpc.Client) (interface{}, error) {
-	return &pluginModule.ProtocolRPC{Client: c}, nil
+func (t *Tgn52Plugin) Client(b *gplugin.MuxBroker, c *rpc.Client) (interface{}, error) {
+	return &plugin.ProtocolRPC{Client: c}, nil
 }
 
 func main() {
 	//调用plugin.Serve()启动侦听，并提供服务
 	//ServeConfig 握手配置，插件进程和宿主机进程，都需要保持一致
 	gplugin.Serve(&gplugin.ServeConfig{
-		HandshakeConfig: pluginModule.HandshakeConfig,
+		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins:         pluginMap,
 	})
 }
