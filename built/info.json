@@ -1,0 +1,19 @@
+{
+  "types": "protocol",
+  "handleType": "tcp",
+  "name": "TGN52",
+  "title": "TGN52",
+  "description": "TGN52设备与服务通讯协议",
+  "version": "0.0.1",
+  "author": ["microrain"],
+  "icon": "mdi-book",
+  "link": "sagoo.cn",
+  "command": "",
+  "args": [""],
+  "root": false,
+  "frontend": {
+    "ui": false,
+    "url":"",
+    "configuration": false
+  }
+}

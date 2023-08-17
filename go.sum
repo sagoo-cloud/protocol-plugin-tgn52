@@ -98,12 +98,7 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
 github.com/rivo/uniseg v0.4.2 h1:YwD0ulJSJytLpiaWua0sBDusfsCZohxjxzVTYjwxfV8=
 github.com/rivo/uniseg v0.4.2/go.mod h1:FN3SvrM+Zdj16jyLfmOkMNblXMcoc8DfTHruCPUcx88=
-github.com/sagoo-cloud/sagooiot v1.0.3 h1:Vx1sc+81QswsTiRWCthFnl4Oxo8m9nZBlhja5d901iU=
-github.com/sagoo-cloud/sagooiot v1.0.3/go.mod h1:34kBTpXdTR8c0NcST5DISYhp2BzU7CZQGRkFlFHVec4=
-github.com/sagoo-cloud/sagooiot v1.0.4 h1:Qc/v36Bk2dZSS05fxgbmlumZ2DjyMGBtDq4mpkM80SE=
-github.com/sagoo-cloud/sagooiot v1.0.4/go.mod h1:34kBTpXdTR8c0NcST5DISYhp2BzU7CZQGRkFlFHVec4=
-github.com/sagoo-cloud/sagooiot v1.0.5 h1:tC6i2qz/quYh5LD/ww8zIfNmmCdBEWgpsKhme1bURPM=
-github.com/sagoo-cloud/sagooiot v1.0.5/go.mod h1:DNBh9+/50n0HoNOe2TirAG6Ko45qHmUlI5SszuSETmI=
+github.com/sagoo-cloud/sagooiot v1.0.6 h1:gjCWlrFJoYB6kHPWCT7957zrfRTUc1Dpjyd8qAZfpD4=
 github.com/sagoo-cloud/sagooiot v1.0.6/go.mod h1:DNBh9+/50n0HoNOe2TirAG6Ko45qHmUlI5SszuSETmI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
