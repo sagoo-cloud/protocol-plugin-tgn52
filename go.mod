@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/gogf/gf/v2 v2.2.0
 	github.com/hashicorp/go-plugin v1.4.10
-	github.com/sagoo-cloud/sagooiot v1.0.5
+	github.com/sagoo-cloud/sagooiot v1.0.6
 
 )
 
